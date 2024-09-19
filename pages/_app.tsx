@@ -5,98 +5,111 @@ import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 import { DefaultSeo } from "next-seo";
-import { ToastContainer, Slide } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-// custom craftwork sans font loading locally
-const craftworkSans = localFont({
+const satoshi = localFont({
   src: [
     {
-      path: "../public/fonts/CraftworkSans/Regular/CraftworkSans-Regular.woff",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Regular.woff",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/CraftworkSans/Regular/CraftworkSans-Regular.woff2",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/CraftworkSans/Regular/CraftworkSans-Regular.ttf",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/CraftworkSans/Bold/CraftworkSans-Bold.woff",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Italic.woff",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Medium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-MediumItalic.woff",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-MediumItalic.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-MediumItalic.ttf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Bold.woff",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../public/fonts/CraftworkSans/Bold/CraftworkSans-Bold.woff2",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Bold.woff2",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../public/fonts/CraftworkSans/Bold/CraftworkSans-Bold.ttf",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-Bold.ttf",
       weight: "700",
       style: "normal",
     },
-  ],
-  variable: "--font-craftworksans",
-});
-
-const guthenBloots = localFont({
-  src: [
     {
-      path: "../public/fonts/GuthenBloots/Guthen Bloots Personal Use.woff",
-      weight: "400",
-      style: "normal",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-BoldItalic.woff",
+      weight: "700",
+      style: "italic",
     },
     {
-      path: "../public/fonts/GuthenBloots/Guthen Bloots Personal Use.woff2",
-      weight: "400",
-      style: "normal",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-BoldItalic.woff2",
+      weight: "700",
+      style: "italic",
     },
     {
-      path: "../public/fonts/GuthenBloots/Guthen Bloots Personal Use.ttf",
-      weight: "400",
-      style: "normal",
+      path: "../public/fonts/Satoshi/fonts/Satoshi-BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
     },
   ],
-  variable: "--font-guthenbloots",
-});
-
-const chedros = localFont({
-  src: [
-    {
-      path: "../public/fonts/Chedros/CHEDROS Regular.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Chedros/CHEDROS Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Chedros/CHEDROS Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-chedros",
+  variable: "--font-satoshi",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const canonicalUrl = (
-    `https://kreativehorizon.com` + (router.asPath === "/" ? "" : router.asPath)
+    `https://kreativeusa.com` + (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
 
   return (
-    <div
-      className={`${craftworkSans.variable} ${guthenBloots.variable} ${chedros.variable}`}
-    >
+    <div className={`${satoshi.variable}`}>
       <DefaultSeo
         title={undefined}
         titleTemplate="%s | Kreative Horizon"
@@ -176,15 +189,12 @@ export default function App({ Component, pageProps }: AppProps) {
           gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
         `}
       </Script>
-
+      <style jsx global>{`
+        html {
+          font-family: ${satoshi.style.fontFamily};
+        }
+      `}</style>
       <Component {...pageProps} />
-      <ToastContainer
-        transition={Slide}
-        position="bottom-left"
-        autoClose={5000}
-        closeOnClick
-        theme="colored"
-      />
     </div>
   );
 }

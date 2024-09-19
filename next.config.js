@@ -37,7 +37,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "['https://kreativehorizon.com', 'https://a.trstplse.com']",
+            value: "['https://kreativehorizon.com']",
           },
           {
             key: "Access-Control-Allow-Methods",
@@ -50,55 +50,6 @@ const nextConfig = {
           },
         ],
       },
-    ];
-  },
-  async redirects() {
-    return [
-      {
-        source: "/press/press-releases",
-        destination: "/press",
-        permanent: true,
-      },
-      {
-        source: "/support",
-        destination: "https://support.kreativeusa.com/horizon",
-        permanent: true,
-      },
-      {
-        source: "/hackisu",
-        destination: "/events/hackisu-v1",
-        permanent: true,
-      },
-      {
-        source: "/hackisu/apply",
-        destination: "/events/hackisu-v1",
-        permanent: true,
-      },
-      {
-        source: "/hackisu/press",
-        destination: "/press",
-        permanent: true,
-      },
-      {
-        source: "/hackisu/packages",
-        destination: "/sponsors",
-        permanent: true,
-      },
-      {
-        source: "/newsletter",
-        destination: "/community",
-        permanent: true,
-      },
-      {
-        source: "/sponsor",
-        destination: "/sponsors",
-        permanent: true,
-      },
-      {
-        source: "/forms",
-        destination: "/",
-        permanent: true,
-      }
     ];
   },
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
@@ -121,7 +72,7 @@ module.exports = withSentryConfig(
     silent: true,
 
     org: "kreative",
-    project: "kreative-horizon-com",
+    project: "kreative-usa-com",
   },
   {
     // For all available options, see:
