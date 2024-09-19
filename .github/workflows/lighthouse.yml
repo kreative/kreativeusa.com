@@ -1,0 +1,47 @@
+name: Lighthouse CI for Netlify sites
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Wait for the Netlify Preview
+        uses: jakepartusch/wait-for-netlify-action@v1.4
+        id: netlify
+        with:
+          site_name: 'kreative-horizon'
+          max_timeout: 420
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            ${{ steps.netlify.outputs.url }}
+            ${{ steps.netlify.outputs.url }}/policies
+            ${{ steps.netlify.outputs.url }}/policies/code-of-conduct
+            ${{ steps.netlify.outputs.url }}/policies/privacy-policy
+            ${{ steps.netlify.outputs.url }}/policies/cookies-policy
+            ${{ steps.netlify.outputs.url }}/policies/terms-of-service
+            ${{ steps.netlify.outputs.url }}/policies/transparency
+            ${{ steps.netlify.outputs.url }}/contact-us
+            ${{ steps.netlify.outputs.url }}/about-us
+            ${{ steps.netlify.outputs.url }}/faqs
+            ${{ steps.netlify.outputs.url }}/travel-grants
+            ${{ steps.netlify.outputs.url }}/press
+            ${{ steps.netlify.outputs.url }}/press/press-releases/new-hackathon-at-iowa-state
+            ${{ steps.netlify.outputs.url }}/branding-guidelines
+            ${{ steps.netlify.outputs.url }}/community
+            ${{ steps.netlify.outputs.url }}/support/submit-incident
+            ${{ steps.netlify.outputs.url }}/reviews
+            ${{ steps.netlify.outputs.url }}/sponsors
+            ${{ steps.netlify.outputs.url }}/sponsors/interest-form
+            ${{ steps.netlify.outputs.url }}/get-involved
+            ${{ steps.netlify.outputs.url }}/events
+            ${{ steps.netlify.outputs.url }}/events/hackisu-v2
+            ${{ steps.netlify.outputs.url }}/events/dataisu-v1
+            ${{ steps.netlify.outputs.url }}/events/hackisu-v3
+            ${{ steps.netlify.outputs.url }}/events/builddsm-v1
+            ${{ steps.netlify.outputs.url }}/events/designjamisu-v1
+            ${{ steps.netlify.outputs.url }}/events/pitchames-v1
+          budgetPath: .github/workflows/budget.json
+          uploadArtifacts: true

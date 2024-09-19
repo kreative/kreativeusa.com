@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-display: swap;
+    font-family: CraftworkSans;
+    font-weight: normal;
+    src: url("/fonts/CraftworkSans/Regular/CraftworkSans-Regular.woff"),
+      url("/fonts/CraftworkSans/Regular/CraftworkSans-Regular.woff2"),
+      url("/fonts/CraftworkSans/Regular/CraftworkSans-Regular.ttf"),
+      url("/fonts/CraftworkSans/Regular/CraftworkSans-Regular.svg"),
+      url("/fonts/CraftworkSans/Regular/CraftworkSans-Regular.otf"),
+      url("/fonts/CraftworkSans/Regular/CraftworkSans-Regular.eot");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: CraftworkSans;
+    font-weight: bold;
+    src: url("/fonts/CraftworkSans/Bold/CraftworkSans-Bold.woff"),
+      url("/fonts/CraftworkSans/Bold/CraftworkSans-Bold.woff2"),
+      url("/fonts/CraftworkSans/Bold/CraftworkSans-Bold.ttf"),
+      url("/fonts/CraftworkSans/Bold/CraftworkSans-Bold.svg"),
+      url("/fonts/CraftworkSans/Bold/CraftworkSans-Bold.otf"),
+      url("/fonts/CraftworkSans/Bold/CraftworkSans-Bold.eot");
+  }
+
+  html {
+    font-family: CraftworkSans, system-ui, sans-serif;
+    @apply text-horizon-grey-800;
+  }
+}
