@@ -21,6 +21,7 @@ module.exports = {
       },
       fontFamily: {
         satoshi: ["var(--font-satoshi)"],
+        departureMono: ["var(--font-departuremono)"],
       },
       colors: {
         background: "hsl(var(--background))",

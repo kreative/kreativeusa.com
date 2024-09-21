@@ -6,6 +6,27 @@ import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 import { DefaultSeo } from "next-seo";
 
+const departureMono = localFont({
+  src: [
+    {
+      path: "../public/fonts/DepatureMono/fonts/DepartureMono-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DepatureMono/fonts/DepartureMono-Regular.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DepatureMono/fonts/DepartureMono-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-departuremono"
+});
+
 const satoshi = localFont({
   src: [
     {
