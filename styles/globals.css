@@ -65,6 +65,7 @@
 
   html {
     font-family: Satoshi, system-ui, sans-serif;
+    background-color: #FFFFFC;
   }
   :root {
     --background: 0 0% 100%;
