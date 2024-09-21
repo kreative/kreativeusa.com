@@ -9,22 +9,22 @@ import { DefaultSeo } from "next-seo";
 const departureMono = localFont({
   src: [
     {
-      path: "../public/fonts/DepatureMono/fonts/DepartureMono-Regular.otf",
+      path: "../public/fonts/DepartureMono/DepartureMono-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/DepatureMono/fonts/DepartureMono-Regular.woff",
+      path: "../public/fonts/DepartureMono/DepartureMono-Regular.woff",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/DepatureMono/fonts/DepartureMono-Regular.woff2",
+      path: "../public/fonts/DepartureMono/DepartureMono-Regular.woff2",
       weight: "400",
       style: "normal",
     },
   ],
-  variable: "--font-departuremono"
+  variable: "--font-departuremono",
 });
 
 const satoshi = localFont({
