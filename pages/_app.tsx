@@ -130,12 +130,12 @@ export default function App({ Component, pageProps }: AppProps) {
   ).split("?")[0];
 
   return (
-    <div className={`${satoshi.variable}`}>
+    <div className={`${satoshi.variable} ${departureMono.variable}`}>
       <DefaultSeo
         title={undefined}
-        titleTemplate="%s | Kreative Horizon"
-        defaultTitle="Kreative Horizon"
-        description="We're on a mission of providing students the tools and resources to build the future of tomorrow, today so we can see the world for what it could be. Hackathons, workshops, and more."
+        titleTemplate="%s | Kreative"
+        defaultTitle="Kreative"
+        description="Radical starts here."
         canonical={canonicalUrl}
         additionalLinkTags={[
           {
@@ -179,9 +179,8 @@ export default function App({ Component, pageProps }: AppProps) {
         ]}
         openGraph={{
           url: "https://kreativehorizon.com/",
-          title: "Kreative Horizon",
-          description:
-            "We're on a mission of providing students the tools and resources to build the future of tomorrow, today so we can see the world for what it could be. Hackathons, workshops, and more.",
+          title: "Kreative",
+          description: "Radical starts here.",
           images: [
             {
               url: "/images/horizon-retro-logo.png",
@@ -190,11 +189,6 @@ export default function App({ Component, pageProps }: AppProps) {
               alt: "Kreative Horizon Retro Logo",
             },
           ],
-        }}
-        twitter={{
-          handle: "@kreativehorizon",
-          site: "@kreativehorizon",
-          cardType: "summary_large_image",
         }}
       />
 

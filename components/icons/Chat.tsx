@@ -17,7 +17,7 @@ export default function Chat(props: ISVGProps) {
           stroke-width="1"
           fill="none"
           fill-rule="evenodd"
-          fill-opacity="0.335051423"
+          fillOpacity="0.335051423"
         >
           <g
             id="navbar-w-icons"
