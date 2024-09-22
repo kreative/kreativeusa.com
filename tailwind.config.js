@@ -24,6 +24,7 @@ module.exports = {
         departureMono: ["var(--font-departuremono)"],
       },
       colors: {
+        inactive: "#B7B7B5",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
