@@ -1,3 +1,3 @@
-import season from './season';
+import kreation from "./kreation";
 
-export const schemaTypes = [season];
+export const schemaTypes = [kreation];
