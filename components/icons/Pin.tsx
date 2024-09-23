@@ -14,16 +14,15 @@ export default function Pin(props: ISVGProps) {
         <g
           id="Symbols"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd"
-          fillOpacity="0.335051423"
+          fillRule="evenodd"
         >
           <g
             id="navbar-w-icons"
             transform="translate(-1383, -9)"
             fill={props.color}
-            fill-rule="nonzero"
+            fillRule="nonzero"
           >
             <g id="links-w-icons" transform="translate(1080, 8)">
               <g id="legal" transform="translate(303, 0)">

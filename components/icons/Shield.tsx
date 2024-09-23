@@ -14,16 +14,15 @@ export default function Shield(props: ISVGProps) {
         <g
           id="Symbols"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd"
-          fillOpacity="0.335051423"
+          fillRule="evenodd"
         >
           <g
             id="navbar-w-icons"
             transform="translate(-1583, -9)"
             fill={props.color}
-            fill-rule="nonzero"
+            fillRule="nonzero"
           >
             <g id="links-w-icons" transform="translate(1080, 8)">
               <g id="mykreative" transform="translate(503, 0)">
