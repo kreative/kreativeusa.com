@@ -16,7 +16,7 @@ export default function Home() {
       <div className="min-h-[100vh]">
         <Container>
           <Tabs
-            defaultValue="account"
+            defaultValue="terms-of-service"
             className="w-full flex flex-col items-center justify-start"
           >
             <TabsList className="mb-6">
