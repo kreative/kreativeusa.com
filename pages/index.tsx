@@ -9,7 +9,7 @@ export default function Home() {
     <div>
       <NextSeo
         title="Home"
-        description="Kreative Horizon aims to empower students with the resources and opportunities to learn, build, and grow through hackathons, workshops, and more."
+        description="Radical starts here."
       />
       <Navbar activeLink="home" />
       <div className="min-h-[100vh]">

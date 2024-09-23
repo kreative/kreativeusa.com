@@ -37,7 +37,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "['https://kreativehorizon.com']",
+            value: "['https://kreativeusa.com']",
           },
           {
             key: "Access-Control-Allow-Methods",

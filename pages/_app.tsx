@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 import { DefaultSeo } from "next-seo";
+import DreamflowBadge from "@/components/DreamflowBadge";
 
 const departureMono = localFont({
   src: [
@@ -178,7 +179,7 @@ export default function App({ Component, pageProps }: AppProps) {
           },
         ]}
         openGraph={{
-          url: "https://kreativehorizon.com/",
+          url: "https://kreativeusa.com/",
           title: "Kreative",
           description: "Radical starts here.",
           images: [
@@ -186,7 +187,7 @@ export default function App({ Component, pageProps }: AppProps) {
               url: "/images/horizon-retro-logo.png",
               width: 700,
               height: 700,
-              alt: "Kreative Horizon Retro Logo",
+              alt: "Kreative Retro Logo",
             },
           ],
         }}
@@ -210,6 +211,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <Component {...pageProps} />
+      <DreamflowBadge />
     </div>
   );
 }
