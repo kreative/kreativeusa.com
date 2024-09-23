@@ -13,7 +13,7 @@ export default function Home() {
       />
       <Navbar activeLink="home" />
       <div className="min-h-[100vh]">
-        <Container>
+        <Container className="font-departureMono">
           Lorem ipsum odor amet, consectetuer adipiscing elit. Platea parturient
           morbi dis aenean porttitor. Dui tellus dictumst consequat id maximus
           varius lacus vivamus aliquet. Sollicitudin fusce nostra amet habitasse
