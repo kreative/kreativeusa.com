@@ -53,7 +53,6 @@ export default function Home() {
         </Container>
         <Footer />
       </div>
-      <DreamflowBadge />
     </div>
   );
 }

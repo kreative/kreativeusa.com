@@ -13,7 +13,6 @@ export default function Home() {
     <div>
       <NextSeo title="Legal" description="Radical starts here." />
       <Navbar activeLink="legal" />
-      <div className="min-h-[100vh]">
         <Container>
           <Tabs
             defaultValue="terms-of-service"
@@ -40,16 +39,6 @@ export default function Home() {
           </Tabs>
         </Container>
         <Footer />
-      </div>
-      <DreamflowBadge />
     </div>
   );
-}
-
-export async function getStaticProps() {
-  // const events: EventCardType[] = await getLatestEvents();
-
-  return {
-    props: {},
-  };
 }
