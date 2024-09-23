@@ -1,8 +1,8 @@
 export default function PrivacyPolicy() {
   return (
     <main>
-      <div className="pt-12 max-w-full lg:max-w-[75%] mx-auto text-xl">
-        <h2 className="font-chedros text-4xl pt-6">Privacy Policy</h2>
+      <div className="text-md">
+        <h2 className="font-chedros text-5xl font-bold tracking-tight pt-6">Privacy Policy</h2>
         <p className="py-3">Last updated: August 02, 2023</p>
         <p className="py-3">
           This Privacy Policy describes Our policies and procedures on the

@@ -28,18 +28,18 @@ function NavLink(props: LinkProps) {
       target={props.target}
       className={cn(
         "flex items-center justify-center transition hover:underline",
-        props.isActive ? "decoration-[rgba(38,38,38,1)]" : "decoration-inactive"
+        props.isActive ? "decoration-[rgba(38,38,38,1)]" : "decoration-inactive",
       )}
     >
-      {props.icon}
-      <p
-        className={cn(
-          "font-bold tracking-tight text-lg",
-          props.isActive ? "text-[rgba(38,38,38,1)]" : "text-inactive"
-        )}
-      >
-        {props.title}
-      </p>
+        {props.icon}
+        <p
+          className={cn(
+            "font-bold tracking-tight text-lg",
+            props.isActive ? "text-[rgba(38,38,38,1)]" : "text-inactive"
+          )}
+        >
+          {props.title}
+        </p>
     </Link>
   );
 }
@@ -61,7 +61,7 @@ export default function Navbar(props: NavbarProps) {
               <Home
                 className="w-6 h-6 -mt-0.5"
                 color={
-                  props.activeLink === "home" ? "rgba(38,38,38,1)" : "#262626"
+                  props.activeLink === "home" ? "rgba(38,38,38,1)" : "#B7B7B5"
                 }
               />
             }
@@ -71,7 +71,7 @@ export default function Navbar(props: NavbarProps) {
             title="Support"
             href="mailto:support@kreativeusa.com"
             target="_blank"
-            icon={<Heart className="w-6 h-6" color={"#262626"} />}
+            icon={<Heart className="w-6 h-6" color={"#B7B7B5"} />}
             isActive={false}
           />
           <NavLink
@@ -81,38 +81,36 @@ export default function Navbar(props: NavbarProps) {
               <BookOpen
                 className="w-6 h-6"
                 color={
-                  props.activeLink === "about" ? "rgba(38,38,38,1)" : "#262626"
+                  props.activeLink === "about" ? "rgba(38,38,38,1)" : "#B7B7B5"
                 }
               />
             }
             isActive={props.activeLink === "about"}
           />
           <NavLink
-            title="Legal"
-            href="/legal"
-            icon={
-              <Pin
-                className="w-6 h-6"
-                color={
-                  props.activeLink === "legal" ? "rgba(38,38,38,1)" : "#262626"
-                }
-              />
-            }
-            isActive={props.activeLink === "legal"}
+            title="MyKreative"
+            href="https://my.kreativeusa.com/account"
+            target="_blank"
+            icon={<Shield className="w-6 h-6" color={"#B7B7B5"} />}
+            isActive={false}
           />
           <NavLink
             title="Contact"
             href="mailto:hello@kreativeusa.com"
             target="_blank"
-            icon={<Chat className="w-6 h-6" color={"#262626"} />}
+            icon={<Chat className="w-6 h-6" color={"#B7B7B5"} />}
             isActive={false}
           />
           <NavLink
-            title="MyKreative"
-            href="https://my.kreativeusa.com/account"
-            target="_blank"
-            icon={<Shield className="w-6 h-6" color={"#262626"} />}
-            isActive={false}
+            title="Legal"
+            href="/legal"
+            icon={
+              <Pin
+                className="w-6 h-6 -ml-1"
+                color={props.activeLink === "legal" ? "#262626" : "#B7B7B5"}
+              />
+            }
+            isActive={props.activeLink === "legal"}
           />
         </div>
       </ContainerWide>

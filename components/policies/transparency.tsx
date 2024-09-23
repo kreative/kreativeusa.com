@@ -1,7 +1,10 @@
 export default function TransparencyPolicy() {
   return (
     <main>
-      <div className="pt-12 max-w-full lg:max-w-[75%] mx-auto">
+      <div className="text-md">
+        <h2 className="font-chedros text-5xl font-bold tracking-tight pt-6 pb-8">
+          Transparency
+        </h2>
         <p className="text-xl pb-3">
           At Kreative, we prioritize building strong relationships with all our
           stakeholders, particularly sponsors and members who participate in our
