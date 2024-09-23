@@ -91,7 +91,7 @@ export default function Navbar(props: NavbarProps) {
             title="MyKreative"
             href="https://my.kreativeusa.com/account"
             target="_blank"
-            icon={<Shield className="w-6 h-6" color={"#B7B7B5"} />}
+            icon={<Shield className="w-6 h-6 -ml-1" color={"#B7B7B5"} />}
             isActive={false}
           />
           <NavLink
