@@ -37,6 +37,7 @@ export default function Home() {
         </Tabs>
       </Container>
       <Footer />
+      <DreamflowBadge />
     </div>
   );
 }

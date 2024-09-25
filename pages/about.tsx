@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { NextSeo } from "next-seo";
+import DreamflowBadge from "@/components/DreamflowBadge";
 
 export default function About() {
   return (
@@ -63,6 +64,7 @@ export default function About() {
         </div>
       </Container>
       <Footer />
+      <DreamflowBadge />
     </div>
   );
 }

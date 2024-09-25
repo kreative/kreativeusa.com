@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import tags from "@/lib/tags";
 
 export default defineType({
   name: "kreation",
@@ -73,14 +74,7 @@ export default defineType({
       type: "array",
       of: [{ type: "string" }],
       options: {
-        list: [
-          { title: "Event", value: "event" },
-          { title: "Service", value: "service" },
-          { title: "Mobile", value: "mobile" },
-          { title: "Web", value: "web" },
-          { title: "Desktop", value: "desktop" },
-          { title: "Utility", value: "utility" },
-        ],
+        list: tags,
       },
     }),
     defineField({

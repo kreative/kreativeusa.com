@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 import { DefaultSeo } from "next-seo";
-import DreamflowBadge from "@/components/DreamflowBadge";
 
 const departureMono = localFont({
   src: [
@@ -211,7 +210,6 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <Component {...pageProps} />
-      <DreamflowBadge />
     </div>
   );
 }
