@@ -12,12 +12,15 @@ import tags from "@/lib/tags";
 import ITag from "@/types/ITag";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/dialog2";
+import StatusBadge from "@/components/StatusBadge";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface HomeProps {
   tags: ITag[];
@@ -29,78 +32,130 @@ export default function Home(props: HomeProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedKreation, setSelectedKreation] = useState<IKreation | null>();
 
-  console.log(props.kreations);
-
   const filteredKreations = useMemo(() => {
     return props.kreations.filter((kreation: IKreation) => {
       if (tag === "all") return true;
       return kreation.tags.includes(tag);
     });
-  }, [tag]);
+  }, [props.kreations, tag]);
 
   return (
     <div>
       <NextSeo title="Home" description="Radical starts here." />
       <Navbar activeLink="home" />
       <ContainerWide>
-        <div className="space-x-4 mb-6">
-          {tags.map((tag: ITag, index: number) => (
+        <div className="flex items-center justify-between">
+          <div className="space-x-4 mb-6">
             <span
-              key={index}
               className={cn(
-                tag.value === "all" ? "text-blue-500" : "text-gray-500",
-                "cursor-pointer hover:text-blue-500"
+                tag === "all" ? "text-blue-500" : "text-gray-500",
+                "cursor-pointer hover:text-blue-500 font-departureMono tracking-tighter"
               )}
-              onClick={() => setTag(tag.value)}
+              onClick={() => setTag("all")}
             >
-              {tag.value}
+              all
             </span>
-          ))}
-        </div>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {filteredKreations.map((kreation: IKreation, index: number) => (
-              <div
+            {tags.map((_tag: ITag, index: number) => (
+              <span
                 key={index}
-                className="p-6 bg-[#F7F7F2] rounded-2xl max-h-[24rem] cursor-pointer"
-                onClick={() => {
-                  setSelectedKreation(kreation);
-                  setOpen(true);
-                }}
+                className={cn(
+                  tag === _tag.value ? "text-blue-500" : "text-gray-500",
+                  "cursor-pointer hover:text-blue-500 font-departureMono tracking-tighter"
+                )}
+                onClick={() => setTag(_tag.value)}
               >
-                <div className="h-72 w-full flex items-center justify-center">
-                  <Image
-                    src={kreation.icon.asset.url}
-                    alt={kreation.name}
-                    width={100}
-                    height={100}
-                    className={`${kreation.icon.shadow} ${kreation.icon.width} ${kreation.icon.height}`}
-                  />
-                </div>
-                <div>
-                  <h2 className="font-medium tracking-tight text-md">
-                    {kreation.name}
-                  </h2>
-                  <p className="text-sm">{kreation.description}</p>
-                </div>
-              </div>
+                {_tag.value}
+              </span>
             ))}
           </div>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>{selectedKreation?.name}</DialogTitle>
-              <DialogTrigger>
-                <button
-                  className="p-2 text-gray-500 hover:text-blue-500"
-                  onClick={() => setOpen(false)}
+          <p className="font-departureMono text-sm tracking-tighter text-gray-400">
+            {filteredKreations.length}{" "}
+            {filteredKreations.length === 1 ? "kreation" : "kreations"}
+          </p>
+        </div>
+        <Dialog open={open} onOpenChange={setOpen}>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <AnimatePresence mode="wait">
+              {filteredKreations.map((kreation: IKreation, index: number) => (
+                <div
+                  key={kreation.name}
+                  className="transition ease-out duration-150 hover:-translate-y-2"
                 >
-                  Close
-                </button>
-              </DialogTrigger>
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5, delay: 0.2 + index * 0.2 },
+                    }}
+                    exit={{ opacity: 0, y: 5, transition: { duration: 0.1 } }}
+                    className="p-6 bg-[#F7F7F2] rounded-2xl max-h-[24rem] cursor-pointer relative"
+                    onClick={() => {
+                      setSelectedKreation(kreation);
+                      setOpen(true);
+                    }}
+                  >
+                    <StatusBadge
+                      status={kreation.status}
+                      className="absolute top-4 right-4"
+                    />
+                    <div className="h-72 w-full flex items-center justify-center">
+                      <Image
+                        src={kreation.icon.asset.url}
+                        alt={kreation.name}
+                        className="h-auto w-52"
+                        width={200}
+                        height={200}
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h2 className="font-medium tracking-tight text-md">
+                        {kreation.name}
+                      </h2>
+                      <p className="text-sm">{kreation.description}</p>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </AnimatePresence>
+          </div>
+          <DialogContent
+            showDefaultClose={true}
+            onOpenAutoFocus={(e: any) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <DialogHeader>
+              <DialogTitle className="text-4xl tracking-tighter">
+                {selectedKreation?.name}
+              </DialogTitle>
             </DialogHeader>
-            <DialogDescription>
-              <p>{selectedKreation?.description}</p>
+            <DialogDescription className="text-lg italic">
+              {selectedKreation?.description}
             </DialogDescription>
+            <p>photors here</p>
+            <p className="">
+              {selectedKreation?.brief
+                .split("\n")
+                .map((text: string, index: number) => (
+                  <p key={index}>
+                    {text}
+                    <br />
+                  </p>
+                ))}
+            </p>
+            <div className="flex items-center justify-start flex-wrap space-x-3">
+              {selectedKreation?.tags.map((tag: string, index: number) => (
+                <span
+                  key={index}
+                  className="text-sm py-1 px-3 rounded-sm bg-gray-200"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </DialogContent>
         </Dialog>
       </ContainerWide>
@@ -112,8 +167,6 @@ export default function Home(props: HomeProps) {
 
 export async function getStaticProps() {
   const kreations: IKreation[] = await getKreations();
-
-  console.log(kreations[0].icon.asset);
 
   return {
     props: {
