@@ -18,9 +18,6 @@ export default interface IKreation {
     asset: {
       url: string;
     };
-    width: string;
-    height: string;
-    shadow: string;
   };
   status: string;
   tags: string[];

@@ -21,7 +21,7 @@ export default defineType({
       title: "Brief",
       description:
         "This is a longer description of the Kreation. Can be a few paragraphs if you want.",
-      type: "string",
+      type: "text",
     }),
     defineField({
       name: "logo",
@@ -38,23 +38,6 @@ export default defineType({
       name: "icon",
       title: "Icon",
       type: "image",
-      fields: [
-        {
-          name: "width",
-          type: "string",
-          title: "Width",
-        },
-        {
-          name: "height",
-          type: "string",
-          title: "Height",
-        },
-        {
-          name: "shadow",
-          type: "string",
-          title: "Shadow Styles"
-        }
-      ],
     }),
     defineField({
       name: "status",

@@ -16,9 +16,6 @@ const getKreations = async (): Promise<IKreation[]> => {
           asset -> {
             url
           },
-          width,
-          height,
-          shadow
         },
         logo {
           asset -> {
