@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/dialog2";
 import StatusBadge from "@/components/StatusBadge";
 import { AnimatePresence, motion } from "framer-motion";
+import { DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
 
 interface HomeProps {
   tags: ITag[];
@@ -40,16 +41,16 @@ export default function Home(props: HomeProps) {
   }, [props.kreations, tag]);
 
   return (
-    <div>
+    <div className="relative">
       <NextSeo title="Home" description="Radical starts here." />
       <Navbar activeLink="home" />
-      <ContainerWide>
-        <div className="flex items-center justify-between">
-          <div className="space-x-4 mb-6">
+      <ContainerWide className="pt-4 pb-[36rem]">
+        <div className="flex items-center justify-between mb-6">
+          <div className="space-x-4 flex items-center justify-start flex-wrap">
             <span
               className={cn(
-                tag === "all" ? "text-blue-500" : "text-gray-500",
-                "cursor-pointer hover:text-blue-500 font-departureMono tracking-tighter"
+                tag === "all" ? "text-purple-600" : "text-gray-500",
+                "cursor-pointer hover:text-purple-500 font-departureMono tracking-tighter"
               )}
               onClick={() => setTag("all")}
             >
@@ -59,8 +60,8 @@ export default function Home(props: HomeProps) {
               <span
                 key={index}
                 className={cn(
-                  tag === _tag.value ? "text-blue-500" : "text-gray-500",
-                  "cursor-pointer hover:text-blue-500 font-departureMono tracking-tighter"
+                  tag === _tag.value ? "text-purple-600" : "text-gray-500",
+                  "cursor-pointer hover:text-purple-500 font-departureMono tracking-tighter"
                 )}
                 onClick={() => setTag(_tag.value)}
               >
@@ -74,7 +75,7 @@ export default function Home(props: HomeProps) {
           </p>
         </div>
         <Dialog open={open} onOpenChange={setOpen}>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <AnimatePresence mode="wait">
               {filteredKreations.map((kreation: IKreation, index: number) => (
                 <div
@@ -87,10 +88,10 @@ export default function Home(props: HomeProps) {
                     animate={{
                       opacity: 1,
                       y: 0,
-                      transition: { duration: 0.5, delay: 0.2 + index * 0.2 },
+                      transition: { duration: 0.5, delay: 0.1 + index * 0.1 },
                     }}
                     exit={{ opacity: 0, y: 5, transition: { duration: 0.1 } }}
-                    className="p-6 bg-[#F7F7F2] rounded-2xl max-h-[24rem] cursor-pointer relative"
+                    className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[24rem] cursor-pointer relative"
                     onClick={() => {
                       setSelectedKreation(kreation);
                       setOpen(true);
@@ -120,6 +121,7 @@ export default function Home(props: HomeProps) {
               ))}
             </AnimatePresence>
           </div>
+
           <DialogContent
             showDefaultClose={true}
             onOpenAutoFocus={(e: any) => {
@@ -127,35 +129,53 @@ export default function Home(props: HomeProps) {
               e.stopPropagation();
             }}
           >
-            <DialogHeader>
-              <DialogTitle className="text-4xl tracking-tighter">
-                {selectedKreation?.name}
-              </DialogTitle>
-            </DialogHeader>
-            <DialogDescription className="text-lg italic">
-              {selectedKreation?.description}
-            </DialogDescription>
-            <p>photors here</p>
-            <p className="">
-              {selectedKreation?.brief
-                .split("\n")
-                .map((text: string, index: number) => (
-                  <p key={index}>
-                    {text}
-                    <br />
-                  </p>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.25, delay: 0.15 },
+              }}
+            >
+              <DialogHeader>
+                <DialogTitle className="text-4xl tracking-tighter">
+                  {selectedKreation?.name}
+                </DialogTitle>
+              </DialogHeader>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.35, delay: 0.35 },
+              }}
+            >
+              <DialogDescription className="text-lg italic">
+                {selectedKreation?.description}
+              </DialogDescription>
+              <p>photors here</p>
+              <p className="">
+                {selectedKreation?.brief
+                  .split("\n")
+                  .map((text: string, index: number) => (
+                    <p key={index}>
+                      {text}
+                      <br />
+                    </p>
+                  ))}
+              </p>
+              <div className="flex items-center justify-start flex-wrap space-x-3">
+                {selectedKreation?.tags.map((tag: string, index: number) => (
+                  <span
+                    key={index}
+                    className="text-sm py-1 px-3 rounded-sm bg-gray-200"
+                  >
+                    {tag}
+                  </span>
                 ))}
-            </p>
-            <div className="flex items-center justify-start flex-wrap space-x-3">
-              {selectedKreation?.tags.map((tag: string, index: number) => (
-                <span
-                  key={index}
-                  className="text-sm py-1 px-3 rounded-sm bg-gray-200"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+              </div>
+            </motion.div>
           </DialogContent>
         </Dialog>
       </ContainerWide>
