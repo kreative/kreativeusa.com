@@ -10,10 +10,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Home() {
   return (
-    <div>
+    <div className="relative">
       <NextSeo title="Legal" description="Radical starts here." />
       <Navbar activeLink="legal" />
-      <Container>
+      <Container className="pb-[34rem]">
         <Tabs
           defaultValue="terms-of-service"
           className="w-full flex flex-col items-center justify-start"
@@ -23,7 +23,7 @@ export default function Home() {
             <TabsTrigger value="privacy-policy">Privacy Policy</TabsTrigger>
             <TabsTrigger value="transparency">Transparency</TabsTrigger>
           </TabsList>
-          <div className="bg-gray-100 w-full py-8 px-12 rounded-xl">
+          <div className="bg-gray-50 border border-gray-200 w-full py-8 px-12 rounded-xl">
             <TabsContent value="terms-of-service">
               <TermsOfService />
             </TabsContent>

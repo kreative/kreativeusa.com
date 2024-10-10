@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="mt-12">
+    <div>
       <Image
         src="/images/edgy-kreative-logo.png"
         alt="Edgy Kreative Logo in black"
-        className="w-full h-auto"
+        className="w-full h-auto absolute bottom-0"
         width={1000}
         height={300}
       />

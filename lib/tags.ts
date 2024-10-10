@@ -7,6 +7,7 @@ const tags: ITag[] = [
   { title: "Web", value: "web" },
   { title: "Desktop", value: "desktop" },
   { title: "Utility", value: "utility" },
+  { title: "Organization", value: "organization" },
 ];
 
 export default tags;

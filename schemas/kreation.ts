@@ -48,6 +48,7 @@ export default defineType({
           { title: "Inactive", value: "inactive" },
           { title: "Active", value: "active" },
           { title: "Coming soon", value: "coming-soon" },
+          { title: "Completed", value: "completed" },
         ],
       },
     }),
