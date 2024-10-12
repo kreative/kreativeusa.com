@@ -1,0 +1,1 @@
+export const ANALYTICS_URL = "https://plausible-analytics-ce-production-a0f7.up.railway.app/js/script.tagged-events.js";
