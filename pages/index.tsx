@@ -22,6 +22,7 @@ import {
 import StatusBadge from "@/components/StatusBadge";
 import { AnimatePresence, motion } from "framer-motion";
 import { DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
+import { Button } from "@/components/ui/button";
 
 interface HomeProps {
   tags: ITag[];
@@ -121,7 +122,6 @@ export default function Home(props: HomeProps) {
               ))}
             </AnimatePresence>
           </div>
-
           <DialogContent
             showDefaultClose={true}
             onOpenAutoFocus={(e: any) => {
@@ -154,7 +154,6 @@ export default function Home(props: HomeProps) {
               <DialogDescription className="text-lg italic">
                 {selectedKreation?.description}
               </DialogDescription>
-              <p>photors here</p>
               <p className="">
                 {selectedKreation?.brief
                   .split("\n")
@@ -165,6 +164,11 @@ export default function Home(props: HomeProps) {
                     </p>
                   ))}
               </p>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="col-span-1">
+                  <p className="text-sm font-semibold">Status</p>
+                </div>
+              </div>
               <div className="flex items-center justify-start flex-wrap space-x-3">
                 {selectedKreation?.tags.map((tag: string, index: number) => (
                   <span
@@ -175,6 +179,15 @@ export default function Home(props: HomeProps) {
                   </span>
                 ))}
               </div>
+              <Button
+                disabled={selectedKreation?.url === null}
+                onClick={() => {
+                  window.open(selectedKreation?.url, "_blank");
+                }}
+                className="my-4 w-full py-7 text-md"
+              >
+                Visit {selectedKreation?.name}
+              </Button>
             </motion.div>
           </DialogContent>
         </Dialog>

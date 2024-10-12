@@ -1,5 +1,10 @@
 import { cn } from "@/lib/utils";
-import { SunHorizon, Eyes, Sun, SealCheck } from "@phosphor-icons/react/dist/ssr";
+import {
+  SunHorizon,
+  Eyes,
+  Sun,
+  SealCheck,
+} from "@phosphor-icons/react/dist/ssr";
 
 interface IStatusBadgeProps {
   status: string;

@@ -10,7 +10,7 @@ export default function About() {
     <div className="relative">
       <NextSeo title="About" description="Radical starts here." />
       <Navbar activeLink="about" />
-      <Container className="pb-[34rem]">
+      <Container className="pb-[34rem] mx-4">
         <h1 className="text-5xl font-bold tracking-tight pt-12">
           Often, we are disappointed by the realities of our potential, but we
           forget that with a long enough timeline our potential is seemingly

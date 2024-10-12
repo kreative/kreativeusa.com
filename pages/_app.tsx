@@ -183,9 +183,9 @@ export default function App({ Component, pageProps }: AppProps) {
           description: "Radical starts here.",
           images: [
             {
-              url: "/images/horizon-retro-logo.png",
-              width: 700,
-              height: 700,
+              url: "/images/kreative-mark.png",
+              width: 972,
+              height: 972,
               alt: "Kreative Retro Logo",
             },
           ],
