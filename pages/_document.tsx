@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import { Html, Main, NextScript, Head } from "next/document";
+import { ANALYTICS_URL } from "@/lib/constants";
 
 export default function Document() {
   return (
@@ -12,7 +13,7 @@ export default function Document() {
               <script
                 defer
                 data-domain="kreativeusa.com"
-                src="https://plausible-analytics-ce-production-a0f7.up.railway.app/js/script.tagged-events.js"
+                src={ANALYTICS_URL}
               ></script>
               <script>
                 window.plausible = window.plausible || function(){" "}
