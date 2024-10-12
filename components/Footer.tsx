@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div>
       <Image
-        src="/images/edgy-kreative-logo.png"
+        src="/images/kreative-edgy-logo.svg"
         alt="Edgy Kreative Logo in black"
         className="w-full h-auto absolute bottom-0"
         width={1000}
