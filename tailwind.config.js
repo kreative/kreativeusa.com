@@ -16,6 +16,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      backgroundImage: {
+        "scared-dog": "url('/images/doggy.gif')",
+      },
       screens: {
         md: "800px",
       },
