@@ -91,10 +91,11 @@ export default function Home(props: HomeProps) {
                       transition: { duration: 0.5, delay: 0.1 + index * 0.1 },
                     }}
                     exit={{ opacity: 0, y: 5, transition: { duration: 0.1 } }}
-                    className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[24rem] cursor-pointer relative"
+                    //className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[24rem] cursor-pointer relative"
+                    className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[24rem] relative"
                     onClick={() => {
-                      setSelectedKreation(kreation);
-                      setOpen(true);
+                      //setSelectedKreation(kreation);
+                      //setOpen(true);
                     }}
                   >
                     <StatusBadge
