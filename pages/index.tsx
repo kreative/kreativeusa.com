@@ -12,17 +12,15 @@ import tags from "@/lib/tags";
 import ITag from "@/types/ITag";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog2";
 import StatusBadge from "@/components/StatusBadge";
 import { AnimatePresence, motion } from "framer-motion";
-import { DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
+import useEmblaCarousel from "embla-carousel-react";
 
 interface HomeProps {
   tags: ITag[];
@@ -33,12 +31,13 @@ export default function Home(props: HomeProps) {
   const [tag, setTag] = useState<string>("all");
   const [open, setOpen] = useState<boolean>(false);
   const [selectedKreation, setSelectedKreation] = useState<IKreation | null>();
+  const [emblaRef] = useEmblaCarousel();
 
   const filteredKreations = useMemo(() => {
     return props.kreations.filter((kreation: IKreation) => {
       if (tag === "all") return true;
       return kreation.tags.includes(tag);
-    });
+    })
   }, [props.kreations, tag]);
 
   return (
@@ -137,10 +136,22 @@ export default function Home(props: HomeProps) {
                 transition: { duration: 0.25, delay: 0.15 },
               }}
             >
-              <DialogHeader>
-                <DialogTitle className="text-4xl tracking-tighter">
-                  {selectedKreation?.name}
-                </DialogTitle>
+              <DialogHeader className="flex flex-row items-center justify-start gap-4">
+                <Image
+                  src={selectedKreation?.icon.asset.url!}
+                  alt={selectedKreation?.name!}
+                  width={110}
+                  height={110}
+                  className="-ml-1"
+                />
+                <div className="space-y-2">
+                  <DialogTitle className="text-4xl tracking-tighter">
+                    {selectedKreation?.name}
+                  </DialogTitle>
+                  <DialogDescription className="text-lg italic">
+                    {selectedKreation?.description}
+                  </DialogDescription>
+                </div>
               </DialogHeader>
             </motion.div>
             <motion.div
@@ -151,9 +162,13 @@ export default function Home(props: HomeProps) {
                 transition: { duration: 0.35, delay: 0.35 },
               }}
             >
-              <DialogDescription className="text-lg italic">
-                {selectedKreation?.description}
-              </DialogDescription>
+              <div className="embla my-8 overflow-hidden" ref={emblaRef}>
+                <div className="embla__container flex">
+                  <div className="embla__slide">Slide 1</div>
+                  <div className="embla__slide">Slide 2</div>
+                  <div className="embla__slide">Slide 3</div>
+                </div>
+              </div>
               <p className="">
                 {selectedKreation?.brief
                   .split("\n")

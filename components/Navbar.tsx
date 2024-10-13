@@ -46,7 +46,7 @@ function NavLink(props: LinkProps) {
 
 export default function Navbar(props: NavbarProps) {
   return (
-    <nav className="sticky top-0 py-4 z-50 bg-[#FFFFFD] bg-opacity-50 backdrop-blur-md">
+    <nav className="sticky top-0 py-4 z-50 bg-[#FFFFFD] bg-opacity-90 backdrop-blur-md">
       <ContainerWide className="flex items-center justify-between">
         <div className="flex items-center justify-start">
           <Link href="/">
