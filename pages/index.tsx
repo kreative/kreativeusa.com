@@ -21,6 +21,7 @@ import StatusBadge from "@/components/StatusBadge";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import useEmblaCarousel from "embla-carousel-react";
+import Link from "next/link";
 
 interface HomeProps {
   tags: ITag[];
@@ -91,11 +92,10 @@ export default function Home(props: HomeProps) {
                       transition: { duration: 0.5, delay: 0.1 + index * 0.1 },
                     }}
                     exit={{ opacity: 0, y: 5, transition: { duration: 0.1 } }}
-                    //className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[24rem] cursor-pointer relative"
-                    className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[24rem] relative"
+                    className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[24rem] cursor-pointer relative"
                     onClick={() => {
-                      //setSelectedKreation(kreation);
-                      //setOpen(true);
+                      setSelectedKreation(kreation);
+                      setOpen(true);
                     }}
                   >
                     <StatusBadge
@@ -141,8 +141,8 @@ export default function Home(props: HomeProps) {
                 <Image
                   src={selectedKreation?.icon.asset.url!}
                   alt={selectedKreation?.name!}
-                  width={110}
-                  height={110}
+                  width={100}
+                  height={100}
                   className="-ml-1"
                 />
                 <div className="space-y-2">
@@ -180,12 +180,24 @@ export default function Home(props: HomeProps) {
                     </p>
                   ))}
               </p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-4 gap-2 mt-10 mb-6">
                 <div className="col-span-1">
-                  <p className="text-sm font-semibold">Status</p>
+                  <p className="text-sm font-semibold mb-2">Status</p>
+                  <StatusBadge status={selectedKreation?.status!} />
+                </div>
+                <div className="col-span-1">
+                  <p className="text-sm font-semibold mb-2">Year founded</p>
+                  <p>{selectedKreation?.founding_year}</p>
+                </div>
+                <div className="col-span-1">
+                  <p className="text-sm font-semibold mb-2">Email</p>
+                  <Link href={`mailto:${selectedKreation?.email}`}>
+                  <p className="underline hover:text-blue-600">{selectedKreation?.email}</p>
+                  </Link>
                 </div>
               </div>
-              <div className="flex items-center justify-start flex-wrap space-x-3">
+              <p className="text-sm font-semibold mb-3">Tags</p>
+              <div className="flex items-center justify-start flex-wrap space-x-3 mb-6">
                 {selectedKreation?.tags.map((tag: string, index: number) => (
                   <span
                     key={index}
