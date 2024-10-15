@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 100%;
+  padding-top: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cecece;
+  border-radius: 5px;
+  padding-top: 18px;
+  border-right: none;
+    border-left: none;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+    margin-bottom: 24px;
+}
+
+::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 24px;
+}
+
 @layer base {
   @font-face {
     font-family: Satoshi;
@@ -140,4 +176,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
 }
