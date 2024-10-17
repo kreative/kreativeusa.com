@@ -149,7 +149,14 @@ export default function Navbar(props: NavbarProps) {
             <SheetTrigger asChild>
               <List className="w-6 h-6" weight="bold" />
             </SheetTrigger>
-            <SheetContent side={"top"} className="px-6 pb-8 flex flex-col items-start justify-center">
+            <SheetContent
+                side={"top"}
+                className="px-6 pb-8 flex flex-col items-start justify-center"
+                onOpenAutoFocus={(e: any) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }}
+            >
               <Logo className="h-8 w-auto mb-6" />
                 <div className={"grid grid-cols-2 gap-4 w-full"}>
                     <div className="col-span-2 sm:col-span-1 flex flex-col items-start justify-center -ml-1">
