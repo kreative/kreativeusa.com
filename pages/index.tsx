@@ -29,6 +29,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Hash } from "@phosphor-icons/react/dist/ssr";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface HomeProps {
   tags: ITag[];
@@ -287,13 +288,13 @@ export default function Home(props: HomeProps) {
                 </AnimatePresence>
               </div>
                 <DrawerContent
-                    //className="overflow-y-auto"
                     className={"rounded-t-3xl"}
                     onOpenAutoFocus={(e: any) => {
                         e.preventDefault();
                         e.stopPropagation();
                     }}
                 >
+                    <ScrollArea className={"overflow-y-auto"}>
                     <motion.div
                         initial={{opacity: 0, y: 10}}
                         animate={{
@@ -392,7 +393,8 @@ export default function Home(props: HomeProps) {
                   </div>
                 </motion.div>
                     </div>
-              </DrawerContent>
+                    </ScrollArea>
+                    </DrawerContent>
             </Drawer>
           </div>
         </ContainerWide>
