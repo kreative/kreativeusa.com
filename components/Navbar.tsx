@@ -12,9 +12,6 @@ import { List } from "@phosphor-icons/react/dist/ssr";
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
 
@@ -51,6 +48,29 @@ function NavLink(props: LinkProps) {
       </p>
     </Link>
   );
+}
+
+function MobileNavLink(props: LinkProps) {
+    return (
+        <Link
+            href={props.href}
+            target={props.target}
+            className={cn(
+                "flex items-center justify-center transition hover:underline py-2 sm:py-3",
+                props.isActive ? "decoration-[rgba(38,38,38,1)]" : "decoration-inactive"
+            )}
+        >
+            {props.icon}
+            <p
+                className={cn(
+                    "font-bold tracking-tight text-3xl ml-1",
+                    props.isActive ? "text-[rgba(38,38,38,1)]" : "text-inactive"
+                )}
+            >
+                {props.title}
+            </p>
+        </Link>
+    );
 }
 
 export default function Navbar(props: NavbarProps) {
@@ -131,8 +151,9 @@ export default function Navbar(props: NavbarProps) {
             </SheetTrigger>
             <SheetContent side={"top"} className="px-6 pb-8 flex flex-col items-start justify-center">
               <Logo className="h-8 w-auto mb-6" />
-              <div className="flex flex-col items-start justify-center space-y-2">
-                <NavLink
+                <div className={"grid grid-cols-2 gap-4 w-full"}>
+                    <div className="col-span-2 sm:col-span-1 flex flex-col items-start justify-center -ml-1">
+                <MobileNavLink
                   title="Home"
                   href="/"
                   icon={
@@ -147,19 +168,19 @@ export default function Navbar(props: NavbarProps) {
                   }
                   isActive={props.activeLink === "home"}
                 />
-                <NavLink
+                <MobileNavLink
                   title="Support"
                   href="https://support.kreativeusa.com"
                   target="_blank"
-                  icon={<Heart className="w-6 h-6" color={"#B7B7B5"} />}
+                  icon={<Heart className="w-10 h-10" color={"#B7B7B5"} />}
                   isActive={false}
                 />
-                <NavLink
+                <MobileNavLink
                   title="About"
                   href="/about"
                   icon={
                     <BookOpen
-                      className="w-6 h-6"
+                      className="w-10 h-10"
                       color={
                         props.activeLink === "about"
                           ? "rgba(38,38,38,1)"
@@ -169,26 +190,26 @@ export default function Navbar(props: NavbarProps) {
                   }
                   isActive={props.activeLink === "about"}
                 />
-                <NavLink
+                <MobileNavLink
                   title="MyKreative"
                   href="https://my.kreativeusa.com/account"
                   target="_blank"
-                  icon={<Shield className="w-6 h-6 -ml-1" color={"#B7B7B5"} />}
+                  icon={<Shield className="w-10 h-10 -ml-1" color={"#B7B7B5"} />}
                   isActive={false}
                 />
-                <NavLink
+                <MobileNavLink
                   title="Contact"
                   href="mailto:hello@kreativeusa.com"
                   target="_blank"
-                  icon={<Chat className="w-6 h-6" color={"#B7B7B5"} />}
+                  icon={<Chat className="w-10 h-10" color={"#B7B7B5"} />}
                   isActive={false}
                 />
-                <NavLink
+                <MobileNavLink
                   title="Legal"
                   href="/legal"
                   icon={
                     <Pin
-                      className="w-6 h-6 -ml-1"
+                      className="w-10 h-10 -ml-1"
                       color={
                         props.activeLink === "legal" ? "#262626" : "#B7B7B5"
                       }
@@ -197,6 +218,16 @@ export default function Navbar(props: NavbarProps) {
                   isActive={props.activeLink === "legal"}
                 />
               </div>
+                    <div className={"hidden sm:block col-span-2 sm:col-span-1 relative"}>
+                        <div className={"rainbow-wrapper rounded-3xl"}>
+                            <div className={"w-full h-full flex items-end justify-end p-5"}>
+                                <p className={"font-departureMono text-xl text-white font-bold italic"}>
+                                    radical starts here
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </SheetContent>
           </div>
         </ContainerWide>
