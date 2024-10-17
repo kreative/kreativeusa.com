@@ -10,15 +10,13 @@ import Pin from "./icons/Pin";
 import Shield from "./icons/Shield";
 import { List } from "@phosphor-icons/react/dist/ssr";
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 
 interface NavbarProps {
   activeLink: string;
@@ -57,8 +55,8 @@ function NavLink(props: LinkProps) {
 
 export default function Navbar(props: NavbarProps) {
   return (
-    <Drawer>
-      <nav className="sticky top-0 pt-6 md:pt-4 pb-0 md:pb-4 z-50 bg-[#FFFFFD] bg-opacity-90 backdrop-blur-md">
+    <Sheet>
+      <nav className="sticky top-0 pt-5 md:pt-4 pb-4 md:pb-4 z-50 bg-[#FFFFFD] bg-opacity-90 backdrop-blur-md">
         <ContainerWide className="flex items-center justify-between">
           <div className="flex items-center justify-start">
             <Link href="/">
@@ -128,11 +126,11 @@ export default function Navbar(props: NavbarProps) {
             />
           </div>
           <div className="flex md:hidden items-start justify-center space-x-2">
-            <DrawerTrigger asChild>
+            <SheetTrigger asChild>
               <List className="w-6 h-6" weight="bold" />
-            </DrawerTrigger>
-            <DrawerContent className="px-6 pb-8 flex flex-col items-start justify-center">
-              <Logo className="h-8 w-auto my-6" />
+            </SheetTrigger>
+            <SheetContent side={"top"} className="px-6 pb-8 flex flex-col items-start justify-center">
+              <Logo className="h-8 w-auto mb-6" />
               <div className="flex flex-col items-start justify-center space-y-2">
                 <NavLink
                   title="Home"
@@ -199,10 +197,10 @@ export default function Navbar(props: NavbarProps) {
                   isActive={props.activeLink === "legal"}
                 />
               </div>
-            </DrawerContent>
+            </SheetContent>
           </div>
         </ContainerWide>
       </nav>
-    </Drawer>
+    </Sheet>
   );
 }
