@@ -244,46 +244,45 @@ export default function Home(props: HomeProps) {
               <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 <AnimatePresence mode="wait">
                   {filteredKreations.map((kreation: IKreation, index: number) => (
-                      <div className="transition ease-out duration-150 hover:-translate-y-2" key={index}>
-                          <motion.div
-                              layout
-                              initial={{opacity: 0, y: 5}}
-                              animate={{
-                                  opacity: 1,
-                                  y: 0,
-                                  transition: {duration: 0.5, delay: 0.1 + index * 0.1},
-                              }}
-                              exit={{opacity: 0, y: 5, transition: {duration: 0.1}}}
-                              className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[32rem] cursor-pointer relative h-full"
-                              onClick={() => {
-                                  setSelectedKreation(kreation);
-                                  setHideBadge(true);
-                                  setOpenDrawer(true);
-                              }}
-                          >
-                              <StatusBadge
-                                  status={kreation.status}
-                                  className="absolute top-4 right-4"
+                      <motion.div
+                          key={index}
+                          layout
+                          initial={{opacity: 0, y: 5}}
+                          animate={{
+                              opacity: 1,
+                              y: 0,
+                              transition: {duration: 0.5, delay: 0.1 + index * 0.1},
+                          }}
+                          exit={{opacity: 0, y: 5, transition: {duration: 0.1}}}
+                          className="p-6 bg-[#F7F7F2] rounded-2xl xs:max-h-[32rem] cursor-pointer relative h-full"
+                          onClick={() => {
+                              setSelectedKreation(kreation);
+                              setHideBadge(true);
+                              setOpenDrawer(true);
+                          }}
+                      >
+                          <StatusBadge
+                              status={kreation.status}
+                              className="absolute top-4 right-4"
+                          />
+                          <div className="h-72 w-full flex items-center justify-center">
+                              <Image
+                                  src={kreation.icon.asset.url}
+                                  alt={kreation.name}
+                                  className="h-auto w-52"
+                                  width={200}
+                                  height={200}
                               />
-                              <div className="h-72 w-full flex items-center justify-center">
-                                  <Image
-                                      src={kreation.icon.asset.url}
-                                      alt={kreation.name}
-                                      className="h-auto w-52"
-                                      width={200}
-                                      height={200}
-                                  />
-                              </div>
-                              <div className="text-center">
-                                  <h2 className="font-medium tracking-tight text-xl xs:text-md">
-                                      {kreation.name}
-                                  </h2>
-                                  <p className="text-md xs:text-sm">
-                                      {kreation.description}
-                                  </p>
-                              </div>
-                          </motion.div>
-                      </div>
+                          </div>
+                          <div className="text-center">
+                              <h2 className="font-medium tracking-tight text-xl xs:text-md">
+                                  {kreation.name}
+                              </h2>
+                              <p className="text-md xs:text-sm">
+                                  {kreation.description}
+                              </p>
+                          </div>
+                      </motion.div>
                   ))}
                 </AnimatePresence>
               </div>
