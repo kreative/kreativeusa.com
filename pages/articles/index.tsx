@@ -8,25 +8,35 @@ import path from "path";
 import { PostPreview } from "@/types/posts";
 import Navbar from "@/components/Navbar";
 import ContainerWide from "@/components/ContainerWide";
+import Footer from "@/components/Footer";
+import DreamflowBadge from "@/components/DreamflowBadge";
+import { motion } from "framer-motion";
+import { NextSeo } from "next-seo";
 
-export default function Home({
+export default function Articles({
   postPreviews,
   count,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div>
+    <div className="relative">
+      <NextSeo
+        title="Guppy's Notes and Articles"
+        description="Useful writings on topics that keep me occupied."
+      />
       <Navbar activeLink="articles" />
-      <ContainerWide className="mt-16">
-        <h1 className="text-5xl font-comingSoon flex items-center justify-start mb-6">
-          <span className="mr-3">Guppy&apos;s</span>
-          <Image
-            className="w-16 h-16 -rotate-6 mr-3"
-            src="/guppy-headshot 1.png"
-            alt="Guppy Headshot"
-            width={100}
-            height={100}
-          />
-          <span>Notes and Articles 📝</span>
+      <ContainerWide className="mt-16 pb-[16rem] sm:pb-[20rem] lg:pb-[36rem]">
+        <h1 className="text-4xl sm:text-5xl font-comingSoon block md:flex items-center justify-start mb-6">
+          <div className="flex items-center justify-start pb-4 md:pb-0">
+            <span className="mr-3">Guppy&apos;s</span>
+            <Image
+              className="w-16 h-16 -rotate-6 mr-3"
+              src="/guppy-headshot 1.png"
+              alt="Guppy Headshot"
+              width={100}
+              height={100}
+            />
+          </div>
+          <div>Notes and Articles 📝</div>
         </h1>
         <p className="font-comingSoon text-lg max-w-5xl mb-12">
           Hello, my name is Armaan Gupta but I go by “Guppy.” I&apos;m the
@@ -52,8 +62,8 @@ export default function Home({
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-4">
-            <div className="col-span-1 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-24">
+            <div className="hidden lg:block col-span-1 space-y-4">
               {postPreviews.col1.map((postPreview, i: number) => {
                 return (
                   <div key={i}>
@@ -62,7 +72,7 @@ export default function Home({
                 );
               })}
             </div>
-            <div className="col-span-1 space-y-4">
+            <div className="hidden lg:block col-span-1 space-y-4">
               {postPreviews.col2.map((postPreview, i: number) => {
                 return (
                   <div key={i}>
@@ -71,8 +81,26 @@ export default function Home({
                 );
               })}
             </div>
-            <div className="col-span-1 space-y-4">
+            <div className="hidden lg:block col-span-1 space-y-4">
               {postPreviews.col3.map((postPreview, i: number) => {
+                return (
+                  <div key={i}>
+                    <PostCard postPreview={postPreview} count={i} key={i} />
+                  </div>
+                );
+              })}
+            </div>
+            <div className="block lg:hidden col-span-1 space-y-4">
+              {postPreviews.mobileCol1.map((postPreview, i: number) => {
+                return (
+                  <div key={i}>
+                    <PostCard postPreview={postPreview} count={i} key={i} />
+                  </div>
+                );
+              })}
+            </div>
+            <div className="block lg:hidden col-span-1 space-y-4">
+              {postPreviews.mobileCol2.map((postPreview, i: number) => {
                 return (
                   <div key={i}>
                     <PostCard postPreview={postPreview} count={i} key={i} />
@@ -83,6 +111,18 @@ export default function Home({
           </div>
         )}
       </ContainerWide>
+      <Footer />
+      <motion.div
+        className={"fixed bottom-4 right-4"}
+        initial={{ opacity: 0, y: 5 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.25 },
+        }}
+      >
+        <DreamflowBadge />
+      </motion.div>
     </div>
   );
 }
@@ -131,6 +171,15 @@ export async function getStaticProps() {
     Math.ceil((postPreviewsSorted.length / 3) * 2)
   );
 
+  const mobileCol1 = postPreviewsSorted.slice(
+    0,
+    Math.ceil(postPreviewsSorted.length / 2)
+  );
+
+  const mobileCol2 = postPreviewsSorted.slice(
+    Math.ceil(postPreviewsSorted.length / 2)
+  );
+
   return {
     props: {
       count: postPreviews.length,
@@ -138,6 +187,8 @@ export async function getStaticProps() {
         col1,
         col2,
         col3,
+        mobileCol1,
+        mobileCol2,
       },
     },
     // enable ISR

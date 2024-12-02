@@ -8,7 +8,10 @@ import DreamflowBadge from "@/components/DreamflowBadge";
 export default function About() {
   return (
     <div className="relative">
-      <NextSeo title="About" description="Radical starts here." />
+      <NextSeo
+        title="About"
+        description="Projects, products, and services by to aid the human condition."
+      />
       <Navbar activeLink="about" />
       <ContainerWide className="pb-[16rem] sm:pb-[20rem] lg:pb-[36rem] grid grid-cols-1 md:grid-cols-2">
         <div>

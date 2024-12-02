@@ -11,15 +11,17 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import DreamflowBadge from "@/components/DreamflowBadge";
 import { formatDate } from "@/lib/utils";
+import { NextSeo } from "next-seo";
 
 export default function PostPage({
   source,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className="relative">
-      <Head>
-        <title>{source.frontmatter.title as string}</title>
-      </Head>
+      <NextSeo
+        title={source.frontmatter.title as string + " | Guppy's Notes & Articles"}
+        description={source.frontmatter.description as string}
+      />
       <Navbar activeLink="articles" />
       <ContainerWide className="pb-[16rem] sm:pb-[20rem] lg:pb-[36rem]">
         <div className="max-w-3xl pt-6">

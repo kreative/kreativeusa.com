@@ -161,12 +161,14 @@ export default function App({ Component, pageProps }: AppProps) {
   ).split("?")[0];
 
   return (
-    <div className={`${satoshi.variable} ${departureMono.variable} ${comingSoon.variable}`}>
+    <div
+      className={`${satoshi.variable} ${departureMono.variable} ${comingSoon.variable}`}
+    >
       <DefaultSeo
         title={undefined}
         titleTemplate="%s | Kreative"
         defaultTitle="Kreative"
-        description="Radical starts here."
+        description="Projects, products, and services by to aid the human condition."
         canonical={canonicalUrl}
         additionalLinkTags={[
           {
@@ -211,7 +213,8 @@ export default function App({ Component, pageProps }: AppProps) {
         openGraph={{
           url: "https://kreativeusa.com/",
           title: "Kreative",
-          description: "Radical starts here.",
+          description:
+            "Projects, products, and services by to aid the human condition.",
           images: [
             {
               url: "/images/kreative-mark.png",
