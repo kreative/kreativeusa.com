@@ -25,6 +25,7 @@ module.exports = {
       fontFamily: {
         satoshi: ["var(--font-satoshi)"],
         departureMono: ["var(--font-departuremono)"],
+        comingSoon: ["var(--font-comingsoon)"],
       },
       colors: {
         inactive: "#B7B7B5",

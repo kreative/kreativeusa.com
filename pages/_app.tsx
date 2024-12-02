@@ -6,6 +6,37 @@ import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 import { DefaultSeo } from "next-seo";
 
+const comingSoon = localFont({
+  src: [
+    {
+      path: "../public/fonts/ComingSoon/ComingSoon-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ComingSoon/ComingSoon-Regular.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ComingSoon/ComingSoon-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ComingSoon/ComingSoon-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ComingSoon/ComingSoon-Regular.eot",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-comingsoon",
+});
+
 const departureMono = localFont({
   src: [
     {
@@ -130,7 +161,7 @@ export default function App({ Component, pageProps }: AppProps) {
   ).split("?")[0];
 
   return (
-    <div className={`${satoshi.variable} ${departureMono.variable}`}>
+    <div className={`${satoshi.variable} ${departureMono.variable} ${comingSoon.variable}`}>
       <DefaultSeo
         title={undefined}
         titleTemplate="%s | Kreative"
