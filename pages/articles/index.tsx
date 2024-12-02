@@ -52,7 +52,7 @@ export default function Articles({
         </p>
         <hr className="border-t-2 border-gray-200 mb-12" />
         {count === 0 ? (
-          <div className="py-12">
+          <div className="pt-12 pb-72">
             <h2 className="text-2xl font-comingSoon mb-4">
               No articles found 😢
             </h2>
