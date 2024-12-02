@@ -149,7 +149,8 @@
   html {
     font-family: Satoshi, system-ui, sans-serif;
     background-color: #FFFFFD;
-    
+    margin: 0;
+    padding: 0;
   }
   :root {
     --background: 0 0% 100%;

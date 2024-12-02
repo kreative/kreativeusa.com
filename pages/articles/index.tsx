@@ -11,10 +11,11 @@ import ContainerWide from "@/components/ContainerWide";
 
 export default function Home({
   postPreviews,
+  count,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div>
-      <Navbar />
+      <Navbar activeLink="articles" />
       <ContainerWide className="mt-16">
         <h1 className="text-5xl font-comingSoon flex items-center justify-start mb-6">
           <span className="mr-3">Guppy&apos;s</span>
@@ -40,35 +41,47 @@ export default function Home({
           </Link>
         </p>
         <hr className="border-t-2 border-gray-200 mb-12" />
-        <div className="grid grid-cols-3 gap-4">
-          <div className="col-span-1 space-y-4">
-            {postPreviews.col1.map((postPreview, i: number) => {
-              return (
-                <div key={i}>
-                  <PostCard postPreview={postPreview} count={i} key={i} />
-                </div>
-              );
-            })}
+        {count === 0 ? (
+          <div className="py-12">
+            <h2 className="text-2xl font-comingSoon mb-4">
+              No articles found 😢
+            </h2>
+            <p className="max-w-2xl">
+              I&apos;m sorry, but it seems like there are no articles to show
+              right now. Please check back later!
+            </p>
           </div>
-          <div className="col-span-1 space-y-4">
-            {postPreviews.col2.map((postPreview, i: number) => {
-              return (
-                <div key={i}>
-                  <PostCard postPreview={postPreview} count={i} key={i} />
-                </div>
-              );
-            })}
+        ) : (
+          <div className="grid grid-cols-3 gap-4">
+            <div className="col-span-1 space-y-4">
+              {postPreviews.col1.map((postPreview, i: number) => {
+                return (
+                  <div key={i}>
+                    <PostCard postPreview={postPreview} count={i} key={i} />
+                  </div>
+                );
+              })}
+            </div>
+            <div className="col-span-1 space-y-4">
+              {postPreviews.col2.map((postPreview, i: number) => {
+                return (
+                  <div key={i}>
+                    <PostCard postPreview={postPreview} count={i} key={i} />
+                  </div>
+                );
+              })}
+            </div>
+            <div className="col-span-1 space-y-4">
+              {postPreviews.col3.map((postPreview, i: number) => {
+                return (
+                  <div key={i}>
+                    <PostCard postPreview={postPreview} count={i} key={i} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="col-span-1 space-y-4">
-            {postPreviews.col3.map((postPreview, i: number) => {
-              return (
-                <div key={i}>
-                  <PostCard postPreview={postPreview} count={i} key={i} />
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        )}
       </ContainerWide>
     </div>
   );
@@ -100,18 +113,27 @@ export async function getStaticProps() {
   }
 
   const postPreviewsSorted = postPreviews.sort((a, b) => {
-    return new Date(b.publishingDate).getTime() - new Date(a.publishingDate).getTime();
+    return (
+      new Date(b.publishingDate).getTime() -
+      new Date(a.publishingDate).getTime()
+    );
   });
 
-  const col1 = postPreviewsSorted.slice(0, Math.ceil(postPreviewsSorted.length / 3));
+  const col1 = postPreviewsSorted.slice(
+    0,
+    Math.ceil(postPreviewsSorted.length / 3)
+  );
   const col2 = postPreviewsSorted.slice(
     Math.ceil(postPreviewsSorted.length / 3),
     Math.ceil((postPreviewsSorted.length / 3) * 2)
   );
-  const col3 = postPreviewsSorted.slice(Math.ceil((postPreviewsSorted.length / 3) * 2));
+  const col3 = postPreviewsSorted.slice(
+    Math.ceil((postPreviewsSorted.length / 3) * 2)
+  );
 
   return {
     props: {
+      count: postPreviews.length,
       postPreviews: {
         col1,
         col2,

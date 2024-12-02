@@ -1,11 +1,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { PostPreview } from "@/types/posts";
-
-const formatDate = (date: string) => {
-  const options = { year: 'numeric' as const, month: 'long' as const, day: 'numeric' as const };
-  return new Date(date).toLocaleDateString(undefined, options);
-}
+import { formatDate } from "@/lib/utils";
 
 export default function PostCard({
   postPreview,
