@@ -13,7 +13,7 @@ export default function Home() {
     <div className="relative">
       <NextSeo title="Legal" description="Radical starts here." />
       <Navbar activeLink="legal" />
-      <Container className="pb-[34rem]">
+      <Container className="pb-[16rem] sm:pb-[20rem] lg:pb-[36rem]">
         <Tabs
           defaultValue="terms-of-service"
           className="w-full flex flex-col items-center justify-start"
